@@ -9,9 +9,11 @@ export function soloPares(array) {
 }
 
 export function moverALaDerecha(array) {
+    //Podria poner un if(array.length===0) return [] pero nose
     const lastElementIndex = array.length - 1;
+    const lastElement = array.length > 0 ? array[lastElementIndex] : false;
     const rightSideArray = array.filter((e, i) => i !== lastElementIndex);
-    const shiftedArray = [array[lastElementIndex], ...rightSideArray];
+    const shiftedArray = lastElement ? [lastElement, ...rightSideArray] : [];
     return shiftedArray;
 }
 
@@ -23,7 +25,7 @@ export function soloUnaPalabra(array) {
 export function soloArraysPositivos(array) {
     const positivesArrays = array.filter((e) => {
         const currentArray = e.filter((number) => number > 0);
-        return currentArray.length === e.length ? true : false;
+        return currentArray.length === e.length;
     });
     return positivesArrays;
 }
